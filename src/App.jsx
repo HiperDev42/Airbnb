@@ -2,31 +2,89 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import NavBar from './NavBar'
+import Card from './Card'
+
 function App() {
   const [count, setCount] = useState(0)
+  const cards = [
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/2ff007be-3213-4768-ab29-ab36de930c3a.jpg?im_w=720',
+      title: 'Condomínio em Morumbi',
+      description: 'Lindo apartamento 4 pessoas, estacionamento.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/miso/Hosting-51432867/original/1f431134-9f45-4bad-aac1-d7483a12b58d.jpeg?im_w=720',
+      title: 'Condomínio em Santa Mônica',
+      description: 'Apartamento completo, fácil de desbloquear.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/2ff007be-3213-4768-ab29-ab36de930c3a.jpg?im_w=720',
+      title: 'Condomínio em Morumbi',
+      description: 'Lindo apartamento 4 pessoas, estacionamento.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/miso/Hosting-51432867/original/1f431134-9f45-4bad-aac1-d7483a12b58d.jpeg?im_w=720',
+      title: 'Condomínio em Santa Mônica',
+      description: 'Apartamento completo, fácil de desbloquear.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/2ff007be-3213-4768-ab29-ab36de930c3a.jpg?im_w=720',
+      title: 'Condomínio em Morumbi',
+      description: 'Lindo apartamento 4 pessoas, estacionamento.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/miso/Hosting-51432867/original/1f431134-9f45-4bad-aac1-d7483a12b58d.jpeg?im_w=720',
+      title: 'Condomínio em Santa Mônica',
+      description: 'Apartamento completo, fácil de desbloquear.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/2ff007be-3213-4768-ab29-ab36de930c3a.jpg?im_w=720',
+      title: 'Condomínio em Morumbi',
+      description: 'Lindo apartamento 4 pessoas, estacionamento.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/miso/Hosting-51432867/original/1f431134-9f45-4bad-aac1-d7483a12b58d.jpeg?im_w=720',
+      title: 'Condomínio em Santa Mônica',
+      description: 'Apartamento completo, fácil de desbloquear.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/2ff007be-3213-4768-ab29-ab36de930c3a.jpg?im_w=720',
+      title: 'Condomínio em Morumbi',
+      description: 'Lindo apartamento 4 pessoas, estacionamento.',
+      price: 973,
+    }),
+    Card({
+      image: 'https://a0.muscache.com/im/pictures/miso/Hosting-51432867/original/1f431134-9f45-4bad-aac1-d7483a12b58d.jpeg?im_w=720',
+      title: 'Condomínio em Santa Mônica',
+      description: 'Apartamento completo, fácil de desbloquear.',
+      price: 973,
+    }),
+  ];
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <NavBar />
+      <div className="container">
+        <div className="cards">
+          <div className="filter">
+            <b>Mais de mil acomodações</b>
+            <button>Filtros</button>
+          </div>
+          {cards}
+        </div>
+        <div className="map">
+          
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
