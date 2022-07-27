@@ -73,7 +73,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <div className="container">
+      <main>
         <div className="cards">
           <div className="filter">
             <b>Mais de mil acomodações</b>
@@ -84,7 +84,7 @@ function App() {
         <div className="map">
           
         </div>
-      </div>
+      </main>
     </div>
   )
 }

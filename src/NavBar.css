@@ -1,13 +1,18 @@
-nav {
+
+:root {
+    --navigation-bar-offset: 80px;
+}
+
+header {
     box-sizing: border-box;
     display: flex;
-    position: fixed;
+    position: sticky;
     top: 0;
     justify-content: space-between;
     overflow: visible;
 
     width: 100%;
-    height: 80px;
+    height: var(--navigation-bar-offset, 80px);
     padding: 15px;
 
     border-bottom: 1px solid #dddddd;
@@ -15,11 +20,11 @@ nav {
     background-color: white;
 }
 
-nav img {
+.header--logo {
     max-height: 100%;
 }
 
-nav .search {
+header .search {
     display: flex;
 
     padding: 5px;
@@ -34,7 +39,7 @@ nav .search {
     transition: 100ms;
 }
 
-nav .search:hover {
+header .search:hover {
     box-shadow: 1px 1px 1px 1px #00000033;
 }
 

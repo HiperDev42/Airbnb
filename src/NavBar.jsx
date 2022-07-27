@@ -4,8 +4,8 @@ import './NavBar.css'
 
 function NavBar() {
     return (
-        <nav>
-            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png' />
+        <header>
+            <img className='header--logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png' />
             <div className="search">
                 <div>Mapa</div>
                 <div>Data</div>
@@ -15,7 +15,7 @@ function NavBar() {
             <div className="user">
                 User Infos
             </div>
-        </nav>
+        </header>
     )
 }
 
