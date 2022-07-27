@@ -4,6 +4,7 @@ import './App.css'
 
 import NavBar from './NavBar'
 import Card from './Card'
+import Map from './Map'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -82,7 +83,7 @@ function App() {
           {cards}
         </div>
         <div className="map">
-          
+          <Map />
         </div>
       </main>
     </div>

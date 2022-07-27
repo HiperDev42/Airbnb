@@ -5,8 +5,11 @@ html, body {
 }
 
 main {
+    box-sizing: border-box;
+
     display: grid;
     grid-template-columns: 2fr 3fr;
+    
     width: 100%;
     height:100%;
 }
@@ -17,5 +20,11 @@ main {
 }
 
 .map {
-    background-color: aqua;
+    box-sizing: border-box;
+
+    position: sticky;
+    top: var(--navigation-bar-offset, 0);
+
+    width: 100%;
+    height: calc(100vh - var(--navigation-bar-offset));
 }
