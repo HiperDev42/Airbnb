@@ -1,4 +1,5 @@
 import React from 'react';
+import Searchbox from './components/Searchbox';
 
 import './NavBar.css'
 
@@ -14,11 +15,8 @@ function NavBar() {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav abs-center">
-                        <li className="nav-item search">
-                            <div>Mapa</div>
-                            <div>Data</div>
-                            <div>Hóspedes</div>
-                            <div><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <li className="nav-item">
+                            <Searchbox />
                         </li>
                     </ul>
                     <ul className="navbar-nav ml-auto">
