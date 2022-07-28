@@ -18,7 +18,7 @@ function App() {
         <div className="cards">
           <div className="filter">
             <b>Mais de mil acomodações</b>
-            <button>Filtros</button>
+            <button type='button' className='btn btn-outline-dark'><i class="fa-solid fa-filter"></i>Filtros</button>
           </div>
           { cards.map((loc, index) => (
             <Card key={index} loc={ loc } />
