@@ -4,16 +4,11 @@
 
 html, body {
     box-sizing: border-box;
-    
-    margin: 0;
-    padding: 0;
 
     font-family: 'Roboto', sans-serif;
 }
 
 main {
-    box-sizing: border-box;
-
     display: grid;
     grid-template-columns: 2fr 3fr;
     
@@ -21,11 +16,11 @@ main {
     height:100%;
 }
 
-.filter {
-    position: sticky;
+.filter-bar {
     top: var(--navigation-bar-offset, 0);
-
+    
     border-bottom: 1px solid #dddddd;
+    font-size: 16px;
 }
 
 .map {
