@@ -1,7 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
 html, body {
+    box-sizing: border-box;
+    
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 main {
@@ -17,6 +24,8 @@ main {
 .filter {
     position: sticky;
     top: var(--navigation-bar-offset, 0);
+
+    border-bottom: 1px solid #dddddd;
 }
 
 .map {

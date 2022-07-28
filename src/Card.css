@@ -1,7 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-
 .block {
     display: block;
 }
@@ -25,14 +22,19 @@
     border-radius: 10px;
 }
 
-.card .title {
-    overflow: clip;
+.one-line {
+    max-height: 1em;
+
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.card .title {
     grid-area: t;
 }
 
 .card .description {
-    text-overflow: ellipsis;
     grid-area: d;
 }
 
