@@ -27,6 +27,7 @@ class Map extends React.Component {
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={15}
+                    options = {{ gestureHandling: 'greedy' }}
                 >
                     { this.state.markers.map((marker, index) => (
                         <Marker
