@@ -14,19 +14,28 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <main>
-        <div className="cards">
-          <div className="d-flex p-2 sticky-top justify-content-between filter-bar bg-white">
-            <b>Mais de mil acomodações</b>
-            <button type='button' className='btn btn-outline-dark'><i class="fa-solid fa-filter"></i>Filtros</button>
+      <main className='container-fluid p-0'>
+        <div className="row g-0 m-0">
+          <div className="col p-0">
+          <div className='container-fluid p-0'>
+              <div className="d-flex p-2 sticky-top justify-content-between filter-bar bg-white">
+                <b>Mais de mil acomodações</b>
+                <button type='button' className='btn btn-outline-dark'><i class="fa-solid fa-filter"></i>Filtros</button>
+              </div>
+              
+            <div className="row">
+              { cards.map((loc, index) => (
+                  <Card key={index} loc={ loc } />
+              )) }
+            </div>
           </div>
-          { cards.map((loc, index) => (
-            <Card key={index} loc={ loc } />
-          )) }
-        </div>
-        <div className="map">
-          <Map
-            markers={ cards }/>
+          </div>
+          <div className="col-6 d-none d-md-block p-0">
+          <div className="map">
+            <Map
+              markers={ cards }/>
+          </div>
+          </div>
         </div>
       </main>
     </div>
