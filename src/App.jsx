@@ -16,7 +16,7 @@ function App() {
       <NavBar />
       <main>
         <div className="cards">
-          <div className="d-flex p-2 sticky-top justify-content-between filter-bar">
+          <div className="d-flex p-2 sticky-top justify-content-between filter-bar bg-white">
             <b>Mais de mil acomodações</b>
             <button type='button' className='btn btn-outline-dark'><i class="fa-solid fa-filter"></i>Filtros</button>
           </div>
