@@ -10,7 +10,6 @@
 }
 
 .navbar {
-    box-sizing: border-box;
     height: var(--navigation-bar-offset, 80px);
 
     border-bottom: 1px solid #dddddd;
