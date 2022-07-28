@@ -22,7 +22,11 @@ main {
 }
 
 .filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
     position: sticky;
+    background-color: white;
     top: var(--navigation-bar-offset, 0);
 
     border-bottom: 1px solid #dddddd;
