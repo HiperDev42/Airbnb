@@ -5,7 +5,7 @@ import './App.css'
 import NavBar from './NavBar'
 import Card from './Card'
 import Map from './Map'
-import { cards } from './Database'
+import cards from './Database.json'
 console.log(cards)
 
 function App() {
