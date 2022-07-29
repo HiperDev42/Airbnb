@@ -11,3 +11,5 @@
   * Filter script
 
 * Footer
+
+* Pagination
