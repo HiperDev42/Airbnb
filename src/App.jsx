@@ -4,7 +4,7 @@ import './App.css'
 
 import NavBar from './NavBar'
 import Card from './Card'
-import Map from './Map'
+import Map from './components/Map'
 import cards from './Database.json'
 console.log(cards)
 
@@ -32,8 +32,7 @@ function App() {
           </div>
           <div className="col-6 d-none d-md-block p-0">
           <div className="map">
-            <Map
-              markers={ cards }/>
+            <Map markers={ cards }/>
           </div>
           </div>
         </div>
