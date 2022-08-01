@@ -7,7 +7,7 @@ function Searchbox() {
             <div>São Paulo - São Paulo</div>
             <div>Qualquer semana</div>
             <div>Hóspedes?</div>
-            <div><i class="fas fa-search btn-search rounded-circle"></i></div>
+            <div><i className="fas fa-search btn-search rounded-circle"></i></div>
         </div>
     )
 }

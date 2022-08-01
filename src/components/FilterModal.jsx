@@ -18,16 +18,16 @@ function PriceInput() {
 
 function FilterModal() {
     return (
-        <div class="modal fade" id="filter-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div className="modal fade" id="filter-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Filtros</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <h2>Faixa de preço</h2>
                         <h3>O preço médio por noite é [R$ 242]</h3>
                         <PriceInput />-<PriceInput />
@@ -38,9 +38,9 @@ function FilterModal() {
                         <h2>Opção de reserva</h2>
                         <h2>Recursos de acessibilidade</h2>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Remover filtros</button>
-                        <button type="button" class="btn btn-primary">Filtrar</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Remover filtros</button>
+                        <button type="button" className="btn btn-primary">Filtrar</button>
                     </div>
                 </div>
             </div>

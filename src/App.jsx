@@ -21,7 +21,7 @@ function App() {
           <div className='container-fluid p-0'>
               <div className="d-flex p-2 sticky-top justify-content-between filter-bar bg-white">
                 <b>Mais de mil acomodações</b>
-                <button type='button' className='btn btn-outline-dark' data-toggle='modal' data-target='#filter-modal'><i class="fa-solid fa-filter"></i>Filtros</button>
+                <button type='button' className='btn btn-outline-dark' data-toggle='modal' data-target='#filter-modal'><i className="fa-solid fa-filter"></i>Filtros</button>
               </div>
               
             <div className="row">

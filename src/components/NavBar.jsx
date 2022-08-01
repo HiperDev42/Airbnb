@@ -10,10 +10,10 @@ function NavBar() {
                 <a href="#" className="navbar-brand">
                     <img className='header--logo' src='./images/Airbnb_Logo.png' />
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav abs-center">
                         <li className="nav-item">
                             <Searchbox />
@@ -23,8 +23,8 @@ function NavBar() {
                         <li className='nav-item mr-auto'>
                             <div className="dropdown">
                                 <button type='button' className="btn dropdown menu--user" id='dropdownUserButton' data-toggle='dropdown' aria-aria-haspopup='true' aria-aria-expanded='false'>
-                                    <i class="fa-solid fa-bars"></i>
-                                    <i class="fa-solid fa-circle-user"></i>
+                                    <i className="fa-solid fa-bars"></i>
+                                    <i className="fa-solid fa-circle-user"></i>
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby='dropdownUserButton'>
                                     <a href="#" className="dropdown-item">Cadastrar-se</a>
