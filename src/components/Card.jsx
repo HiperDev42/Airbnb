@@ -3,7 +3,7 @@ import './Card.css'
 
 function Card(props) {
     return (
-        <div className="card">
+        <div className="loc--card">
             <img src={props.loc.image} />
             <div className='grid'>
                 <div className="title one-line">{props.loc.title}</div>

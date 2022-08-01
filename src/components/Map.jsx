@@ -5,6 +5,10 @@ import styled from 'styled-components';
 
 const ApiKey = 'AIzaSyCVwI0g25eE5nfJgwRrcu1W_IFpmgmG4-s'
 
+//const center = { lat: -23.567562, lng: -46.655990 };
+const center = { lat: -23.676132089691247, lng: -46.39583514208142 };
+
+
 const locale = 'pt-br';
 const currency = 'BRL';
 const curFormatter = new Intl.NumberFormat(locale, {
@@ -58,24 +62,60 @@ const TextWrapper = styled.span`
     line-height: 18px !important;
 `;
 
+const InfoWindowWrapper = styled.div`
+    box-sizing; border-box;
+
+    position: absolute;
+    bottom: 30px; left: 50%;
+    transform: translate(-50%, 0);
+
+    overflow: visible;
+`;
+
+class MarkerInfoWindow extends React.Component {
+    render() {
+        const cardStyle = {
+            width: '18rem',
+            border: 'none !important',
+        }
+        return (
+            <InfoWindowWrapper>
+                <div className="card" style={cardStyle}>
+                    <img src={this.props.marker.image} className="card-img-top" />
+                    <div className="card-body">
+                        <h5 className="card-title">{this.props.marker.title}</h5>
+                        <p className="card-text">{this.props.marker.description}</p>
+                    </div>
+                </div>
+            </InfoWindowWrapper>
+        );
+    }
+}
+
 class Marker extends React.Component {
     render() {
         return (
-            <MarkerWrapper>
+            <MarkerWrapper onClick={() => this.props.onClick()}>
                 <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
+                {this.props.selected && <MarkerInfoWindow marker={this.props}/>}
             </MarkerWrapper>
         )
     }
 }
 
-const center = { lat: -23.567562, lng: -46.655990 };
-
 class Map extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            markers: props.markers
+            selected: 3,
+        };
+    };
+
+    handleClick = (i) => {
+        const newState = {
+            selected: i,
         }
+        this.setState(newState);
     }
 
     render() {
@@ -87,9 +127,11 @@ class Map extends React.Component {
                     defaultZoom={15}
                     options = {{ gestureHandling: 'greedy' }}
                 >
-                    { this.state.markers.map((marker, index) => (
+                    { this.props.markers.map((marker, index) => (
                         <Marker
                             key={index}
+                            selected={ this.state.selected == index }
+                            onClick={() => this.handleClick(index)}
                             {...marker}
                         />
                     )) }
