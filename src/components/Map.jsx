@@ -5,10 +5,12 @@ import styled from 'styled-components';
 
 const ApiKey = 'AIzaSyCVwI0g25eE5nfJgwRrcu1W_IFpmgmG4-s'
 
-const containerStyle = {
-    width: '100%',
-    height: '100%'
-};
+const Wrapper = styled.div`
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+`
 
 const Marker = styled.div`
     position: absolute;
@@ -35,21 +37,22 @@ class Map extends React.Component {
 
     render() {
         return (
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: ApiKey }}
-                style={containerStyle}
-                defaultCenter={center}
-                defaultZoom={15}
-                options = {{ gestureHandling: 'greedy' }}
-            >
-                { this.state.markers.map((marker, index) => (
-                    <Marker
-                        key={index}
-                        lat={marker.position.lat}
-                        lng={marker.position.lng}
-                    />
-                )) }
-            </GoogleMapReact>
+            <Wrapper>
+                <GoogleMapReact
+                    bootstrapURLKeys={{ key: ApiKey }}
+                    defaultCenter={center}
+                    defaultZoom={15}
+                    options = {{ gestureHandling: 'greedy' }}
+                >
+                    { this.state.markers.map((marker, index) => (
+                        <Marker
+                            key={index}
+                            lat={marker.position.lat}
+                            lng={marker.position.lng}
+                        />
+                    )) }
+                </GoogleMapReact>
+            </Wrapper>
         )
     }
 }
