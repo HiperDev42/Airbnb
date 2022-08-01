@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
-import NavBar from './NavBar'
-import Card from './Card'
-import Map from './Map'
+import NavBar from './components/NavBar'
+import Card from './components/Card'
+import Map from './components/Map'
 import FilterModal from './components/FilterModal'
 import cards from './Database.json'
 
