@@ -1,7 +1,11 @@
 {
   "name": "airbnb",
   "private": true,
+<<<<<<< HEAD
   "version": "1.0.1.1",
+=======
+  "version": "1.0.5",
+>>>>>>> marker
   "type": "module",
   "scripts": {
     "dev": "vite",

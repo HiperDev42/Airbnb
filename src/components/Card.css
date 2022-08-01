@@ -9,14 +9,14 @@
     grid-template-areas: "t r" "d ." "p p";
 }
 
-.card {
+.loc--card {
     font-family: 'Roboto', sans-serif;
     display: inline-block;
     width: 40%;
     margin: 5%;
 }
 
-.card img {
+.loc--card img {
     max-width: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -30,15 +30,15 @@
     text-overflow: ellipsis;
 }
 
-.card .title {
+.loc--card .title {
     grid-area: t;
 }
 
-.card .description {
+.loc--card .description {
     grid-area: d;
 }
 
-.card .rating {
+.loc--card .rating {
     grid-area: r;
 }
 
