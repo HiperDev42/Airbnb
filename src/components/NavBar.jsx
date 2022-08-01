@@ -1,5 +1,5 @@
 import React from 'react';
-import Searchbox from './components/Searchbox';
+import Searchbox from './Searchbox';
 
 import './NavBar.css'
 
