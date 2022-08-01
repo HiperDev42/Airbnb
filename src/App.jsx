@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <FilterModal />
       <main className='container-fluid p-0'>
         <div className="row g-0 m-0">
           <div className="col p-0">
@@ -26,7 +25,7 @@ function App() {
               
             <div className="row">
               { cards.map((loc, index) => (
-                  <Card key={index} loc={ loc } />
+                <Card key={index} loc={ loc } />
               )) }
             </div>
           </div>
@@ -38,6 +37,7 @@ function App() {
           </div>
         </div>
       </main>
+      <FilterModal />
     </div>
   )
 }
