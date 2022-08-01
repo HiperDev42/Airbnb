@@ -51,8 +51,18 @@ const MarkerWrapper = styled.div`
         transform: translate(-50%, -50%) scale(1.3);
         transform-origin: center center;
         cursor: pointer;
+        z-index: 2;
     }
 `;
+
+const selectedTheme = {
+    transform: 'translate(-50%, -50%) scale(1.3)',
+    transformOrigin: 'center center',
+    zIndex: 1,
+
+    backgroundColor: '#222222',
+    color: '#fff',
+}
 
 const TextWrapper = styled.span`
     position: relative;
@@ -68,8 +78,9 @@ const InfoWindowWrapper = styled.div`
     position: absolute;
     bottom: 30px; left: 50%;
     transform: translate(-50%, 0);
+    z-index: 2;
 
-    overflow: visible;
+    color: #000;
 `;
 
 class MarkerInfoWindow extends React.Component {
@@ -95,7 +106,7 @@ class MarkerInfoWindow extends React.Component {
 class Marker extends React.Component {
     render() {
         return (
-            <MarkerWrapper onClick={() => this.props.onClick()}>
+            <MarkerWrapper style={this.props.selected ? selectedTheme : null} onClick={() => this.props.onClick()}>
                 <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
                 {this.props.selected && <MarkerInfoWindow marker={this.props}/>}
             </MarkerWrapper>
@@ -107,7 +118,7 @@ class Map extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            selected: 3,
+            selected: null,
         };
     };
 
