@@ -2,6 +2,9 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
 
+// Components
+import Card from './Card'
+
 
 const ApiKey = 'AIzaSyCVwI0g25eE5nfJgwRrcu1W_IFpmgmG4-s'
 
@@ -74,30 +77,23 @@ const TextWrapper = styled.span`
 
 const InfoWindowWrapper = styled.div`
     box-sizing; border-box;
+    width: 324px;
 
     position: absolute;
     bottom: 30px; left: 50%;
     transform: translate(-50%, 0);
     z-index: 2;
-
-    color: #000;
 `;
 
 class MarkerInfoWindow extends React.Component {
     render() {
-        const cardStyle = {
-            width: '18rem',
-            border: 'none !important',
-        }
         return (
             <InfoWindowWrapper>
-                <div className="card" style={cardStyle}>
-                    <img src={this.props.marker.image} className="card-img-top" />
-                    <div className="card-body">
-                        <h5 className="card-title">{this.props.marker.title}</h5>
-                        <p className="card-text">{this.props.marker.description}</p>
-                    </div>
-                </div>
+                <Card
+                    id="marker"
+                    loc={this.props.marker}
+                    isMarker={true}
+                />
             </InfoWindowWrapper>
         );
     }
@@ -105,11 +101,16 @@ class MarkerInfoWindow extends React.Component {
 
 class Marker extends React.Component {
     render() {
+        const selected = this.props.selected;
+        const hover = this.props.hover;
         return (
-            <MarkerWrapper style={this.props.selected ? selectedTheme : null} onClick={() => this.props.onClick()}>
-                <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
+            <div>
+                <MarkerWrapper style={(selected || hover) ? selectedTheme : null}
+                    onClick={() => this.props.onClick()}>
+                    <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
+                </MarkerWrapper>
                 {this.props.selected && <MarkerInfoWindow marker={this.props}/>}
-            </MarkerWrapper>
+            </div>
         )
     }
 }
@@ -119,12 +120,24 @@ class Map extends React.Component {
         super(props)
         this.state = {
             selected: null,
+            hover: null,
         };
+
+        props.setHover.current = this.setHover;
     };
+
+    setHover = (i) => {
+        const newState = {
+            selected: this.state.selected,
+            hover: i,
+        }
+        this.setState(newState);
+    }
 
     handleClick = (i) => {
         const newState = {
             selected: i,
+            hover: this.state.hover,
         }
         this.setState(newState);
     }
@@ -136,11 +149,13 @@ class Map extends React.Component {
                     bootstrapURLKeys={{ key: ApiKey }}
                     defaultCenter={center}
                     defaultZoom={15}
+                    onClick={() => {this.handleClick(null)}}
                     options = {{ gestureHandling: 'greedy' }}
                 >
                     { this.props.markers.map((marker, index) => (
                         <Marker
                             key={index}
+                            hover={this.state.hover == index}
                             selected={ this.state.selected == index }
                             onClick={() => this.handleClick(index)}
                             {...marker}

@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useRef, useState } from 'react'
+import styled from 'styled-components'
+
 import './App.css'
 
 import NavBar from './components/NavBar'
@@ -8,8 +9,15 @@ import Map from './components/Map'
 import FilterModal from './components/FilterModal'
 import cards from './Database.json'
 
+const CardWrapper = styled.div`
+  display: flex;
+  width: 40%;
+  margin: 5%;
+`;
+
 function App() {
   const [count, setCount] = useState(0)
+  const hoverRef = useRef((x) => {})
 
   return (
     <div className="App">
@@ -25,14 +33,20 @@ function App() {
               
             <div className="row">
               { cards.map((loc, index) => (
-                <Card key={index} loc={ loc } />
+                <CardWrapper>
+                  <Card
+                    key={index} id={index} loc={ loc }
+                    onMouseEnter={() => {hoverRef.current(index)}}
+                    onMouseLeave={() => {hoverRef.current(null)}}
+                  />
+                </CardWrapper>
               )) }
             </div>
           </div>
           </div>
           <div className="col-6 d-none d-md-block p-0">
           <div className="map">
-            <Map markers={ cards }/>
+            <Map setHover={hoverRef} markers={ cards }/>
           </div>
           </div>
         </div>

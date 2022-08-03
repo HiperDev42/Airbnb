@@ -3,27 +3,9 @@
     display: block;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 75% 25%;
-    grid-template-areas: "t r" "d ." "p p";
-}
-
-.loc--card {
-    font-family: 'Roboto', sans-serif;
-    display: inline-block;
-    width: 40%;
-    margin: 5%;
-}
-
-.loc--card img {
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
 .one-line {
-    max-height: 1em;
+    max-height: 1.25em;
+    line-height: 1.25;
 
     white-space: nowrap;
     overflow: hidden;
@@ -32,6 +14,8 @@
 
 .loc--card .title {
     grid-area: t;
+
+    font-weight: 600;
 }
 
 .loc--card .description {
@@ -42,6 +26,39 @@
     grid-area: r;
 }
 
-.pricing {
+.loc--card .pricing {
     grid-area: p;
+
+    font-weight: 600;
+}
+
+.image-square {
+    position: relative;
+
+    height: 0;
+    padding-bottom: 100%;
+    width: 100%;
+
+        border-radius: 20px;
+
+    background-color: #00000022;
+
+    overflow: hidden;
+}
+
+.image-wide {
+    position: relative;
+
+    height: 210px;
+    width: 100%;
+
+    background-color: #00000022;
+
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.image-square div, .image-wide div {
+    position: absolute !important;
+    height: 100%;
 }
