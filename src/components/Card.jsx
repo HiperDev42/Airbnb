@@ -33,7 +33,7 @@ const Squared = styled.div`
 `;
 
 const Carousel = (props) => (
-    <div id={"carousel"+props.id} className={"carousel slide"+(props.isMarker?" image-wide":" image-square")} style={{width: '100% !important', height: '100% !important'}} data-ride="carousel" data-interval="false">
+    <div id={"carousel"+props.id} className={"carousel slide"+(props.isMarker?" image-wide":" image-square")} style={{width: '100% !important', height: '100% !important'}} data-ride="carousel" data-interval="false" data-wrap="false">
     <ol class="carousel-indicators">
         <li data-target={"#carousel"+props.id} data-slide-to="0" class="active"></li>
         <li data-target={"#carousel"+props.id} data-slide-to="1"></li>
@@ -83,9 +83,20 @@ const InfoWrapper = styled.div`
     font-size: 15px;
 `;
 
+const Wrapper = styled.a`
+    cursor: pointer;
+    &, &:hover, &:focus, &:active{
+        color: inherit;
+        text-decoration: none;
+    }
+`;
+
 function Card(props) {
     return (
-        <div className={'loc--card' + (props.markerStyle ? ' loc--card-marker' : '')}>
+        <Wrapper
+            href='/#'
+            className='loc--card'
+        >
             <Carousel id={props.id} isMarker={props.isMarker} src={props.loc.image}/>
             <InfoWrapper isMarker={props.isMarker}>
                 <span className="title one-line">{props.loc.title}</span>
@@ -93,7 +104,7 @@ function Card(props) {
                 <div className='description one-line text-muted'>{props.loc.description}</div>
                 <div className='pricing'>R$ {props.loc.price}</div>
             </InfoWrapper>
-        </div>
+        </Wrapper>
     )
 }
 
