@@ -2,6 +2,9 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
 
+// Components
+import Card from './Card'
+
 
 const ApiKey = 'AIzaSyCVwI0g25eE5nfJgwRrcu1W_IFpmgmG4-s'
 
@@ -74,30 +77,22 @@ const TextWrapper = styled.span`
 
 const InfoWindowWrapper = styled.div`
     box-sizing; border-box;
+    width: 324px;
 
     position: absolute;
     bottom: 30px; left: 50%;
     transform: translate(-50%, 0);
     z-index: 2;
-
-    color: #000;
 `;
 
 class MarkerInfoWindow extends React.Component {
     render() {
-        const cardStyle = {
-            width: '18rem',
-            border: 'none !important',
-        }
         return (
             <InfoWindowWrapper>
-                <div className="card" style={cardStyle}>
-                    <img src={this.props.marker.image} className="card-img-top" />
-                    <div className="card-body">
-                        <h5 className="card-title">{this.props.marker.title}</h5>
-                        <p className="card-text">{this.props.marker.description}</p>
-                    </div>
-                </div>
+                <Card
+                    loc={this.props.marker}
+                    isMarker={true}
+                />
             </InfoWindowWrapper>
         );
     }
@@ -106,10 +101,12 @@ class MarkerInfoWindow extends React.Component {
 class Marker extends React.Component {
     render() {
         return (
-            <MarkerWrapper style={this.props.selected ? selectedTheme : null} onClick={() => this.props.onClick()}>
-                <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
+            <div>
+                <MarkerWrapper style={this.props.selected ? selectedTheme : null} onClick={() => this.props.onClick()}>
+                    <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
+                </MarkerWrapper>
                 {this.props.selected && <MarkerInfoWindow marker={this.props}/>}
-            </MarkerWrapper>
+            </div>
         )
     }
 }

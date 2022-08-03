@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import styled from 'styled-components'
+
 import './App.css'
 
 import NavBar from './components/NavBar'
@@ -7,6 +8,12 @@ import Card from './components/Card'
 import Map from './components/Map'
 import FilterModal from './components/FilterModal'
 import cards from './Database.json'
+
+const CardWrapper = styled.div`
+  display: flex;
+  width: 40%;
+  margin: 5%;
+`;
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,7 +32,7 @@ function App() {
               
             <div className="row">
               { cards.map((loc, index) => (
-                <Card key={index} loc={ loc } />
+                <CardWrapper><Card key={index} loc={ loc } /></CardWrapper>
               )) }
             </div>
           </div>
