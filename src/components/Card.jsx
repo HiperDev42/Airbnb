@@ -13,7 +13,7 @@ const ImageWrapper = styled.div`
      padding-bottom: 100%;` }
     width: 100%;
 
-    background-color: red;
+    background-color: #00000022;
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -21,13 +21,48 @@ const ImageWrapper = styled.div`
     border-bottom-right-radius: ${props => !props.isMarker ? "20" : "0"}px;
     
     overflow: hidden;
+
+    & * {
+        position: absolute;
+    }
 `;
+
+const Squared = styled.div`
+        width: 300px;
+        height: 300px;
+`;
+
+const Carousel = (props) => (
+    <div id="carouselExampleIndicators" className={"carousel slide"+(props.isMarker?" image-wide":" image-square")} style={{width: '100% !important', height: '100% !important'}} data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        {props.src.map((img, index) => (
+            <div className={"carousel-item"+(index===0? " active":"")}>
+                <CardImage src={img} alt="ERROR" />
+            </div>
+        ))}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    </div>
+);
 
 const CardImage = styled.img`
     position: absolute;
+    display: block;
 
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
 `;
 
@@ -49,14 +84,9 @@ const InfoWrapper = styled.div`
 `;
 
 function Card(props) {
-    console.log(props.image)
     return (
         <div className={'loc--card' + (props.markerStyle ? ' loc--card-marker' : '')}>
-            <ImageWrapper isMarker={props.isMarker}>
-                <CardImage
-                    src={props.loc.image}
-                />
-            </ImageWrapper>
+            <Carousel isMarker={props.isMarker} src={props.loc.image}/>
             <InfoWrapper isMarker={props.isMarker}>
                 <span className="title one-line">{props.loc.title}</span>
                 <div className='rating'><span className='fa fa-star'>5,0 (5)</span></div>

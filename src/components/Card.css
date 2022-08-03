@@ -31,3 +31,34 @@
 
     font-weight: 600;
 }
+
+.image-square {
+    position: relative;
+
+    height: 0;
+    padding-bottom: 100%;
+    width: 100%;
+
+        border-radius: 20px;
+
+    background-color: #00000022;
+
+    overflow: hidden;
+}
+
+.image-wide {
+    position: relative;
+
+    height: 210px;
+    width: 100%;
+
+    background-color: #00000022;
+
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.image-square div, .image-wide div {
+    position: absolute !important;
+    height: 100%;
+}
