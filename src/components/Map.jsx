@@ -149,6 +149,7 @@ class Map extends React.Component {
                     bootstrapURLKeys={{ key: ApiKey }}
                     defaultCenter={center}
                     defaultZoom={15}
+                    onClick={() => {this.handleClick(null)}}
                     options = {{ gestureHandling: 'greedy' }}
                 >
                     { this.props.markers.map((marker, index) => (
