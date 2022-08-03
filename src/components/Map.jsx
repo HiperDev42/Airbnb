@@ -90,6 +90,7 @@ class MarkerInfoWindow extends React.Component {
         return (
             <InfoWindowWrapper>
                 <Card
+                    id="marker"
                     loc={this.props.marker}
                     isMarker={true}
                 />

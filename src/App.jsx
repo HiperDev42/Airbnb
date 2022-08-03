@@ -32,7 +32,7 @@ function App() {
               
             <div className="row">
               { cards.map((loc, index) => (
-                <CardWrapper><Card key={index} loc={ loc } /></CardWrapper>
+                <CardWrapper><Card key={index} id={index} loc={ loc } /></CardWrapper>
               )) }
             </div>
           </div>
