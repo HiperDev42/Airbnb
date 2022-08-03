@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import './App.css'
@@ -17,6 +17,7 @@ const CardWrapper = styled.div`
 
 function App() {
   const [count, setCount] = useState(0)
+  const hoverRef = useRef((x) => {})
 
   return (
     <div className="App">
@@ -32,14 +33,20 @@ function App() {
               
             <div className="row">
               { cards.map((loc, index) => (
-                <CardWrapper><Card key={index} id={index} loc={ loc } /></CardWrapper>
+                <CardWrapper>
+                  <Card
+                    key={index} id={index} loc={ loc }
+                    onMouseEnter={() => {hoverRef.current(index)}}
+                    onMouseLeave={() => {hoverRef.current(null)}}
+                  />
+                </CardWrapper>
               )) }
             </div>
           </div>
           </div>
           <div className="col-6 d-none d-md-block p-0">
           <div className="map">
-            <Map markers={ cards }/>
+            <Map setHover={hoverRef} markers={ cards }/>
           </div>
           </div>
         </div>

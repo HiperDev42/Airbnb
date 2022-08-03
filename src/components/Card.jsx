@@ -96,6 +96,8 @@ function Card(props) {
         <Wrapper
             href='/#'
             className='loc--card'
+            onMouseEnter={props.onMouseEnter}
+            onMouseLeave={props.onMouseLeave}
         >
             <Carousel id={props.id} isMarker={props.isMarker} src={props.loc.image}/>
             <InfoWrapper isMarker={props.isMarker}>

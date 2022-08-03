@@ -101,9 +101,12 @@ class MarkerInfoWindow extends React.Component {
 
 class Marker extends React.Component {
     render() {
+        const selected = this.props.selected;
+        const hover = this.props.hover;
         return (
             <div>
-                <MarkerWrapper style={this.props.selected ? selectedTheme : null} onClick={() => this.props.onClick()}>
+                <MarkerWrapper style={(selected || hover) ? selectedTheme : null}
+                    onClick={() => this.props.onClick()}>
                     <TextWrapper>{curFormatter.format(this.props.price)}</TextWrapper>
                 </MarkerWrapper>
                 {this.props.selected && <MarkerInfoWindow marker={this.props}/>}
@@ -117,12 +120,24 @@ class Map extends React.Component {
         super(props)
         this.state = {
             selected: null,
+            hover: null,
         };
+
+        props.setHover.current = this.setHover;
     };
+
+    setHover = (i) => {
+        const newState = {
+            selected: this.state.selected,
+            hover: i,
+        }
+        this.setState(newState);
+    }
 
     handleClick = (i) => {
         const newState = {
             selected: i,
+            hover: this.state.hover,
         }
         this.setState(newState);
     }
@@ -139,6 +154,7 @@ class Map extends React.Component {
                     { this.props.markers.map((marker, index) => (
                         <Marker
                             key={index}
+                            hover={this.state.hover == index}
                             selected={ this.state.selected == index }
                             onClick={() => this.handleClick(index)}
                             {...marker}
