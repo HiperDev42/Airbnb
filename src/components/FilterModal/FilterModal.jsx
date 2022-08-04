@@ -32,7 +32,10 @@ function PriceInput(props) {
 const defaultFilters = {
     price_min: '',
     price_max: '',
-    entire_space: 'true',
+    entire_space: false,
+    rooms: '',
+    beds: '',
+    bathrooms: '',
 }
 
 class FilterModal extends React.Component {
@@ -46,8 +49,14 @@ class FilterModal extends React.Component {
     }
 
     update = (e) => {
-        console.log('update')
-        const {name, value} = e.target;
+        let name, value;
+        if (e.target.type == "checkbox") {
+            name = e.target.name;
+            value = e.target.checked;
+        } else {
+            name = e.target.name;
+            value = e.target.value;
+        }
         
         const newState = {
             ...this.state,
@@ -56,13 +65,44 @@ class FilterModal extends React.Component {
         this.setState(newState, console.log(this.state));
     }
 
+    setValue = (name, value) => {
+        const newState = {
+            ...this.state,
+            [name]: value,
+        }
+        this.setState(newState, console.log(this.state))
+    }
+
     Input = (props) => {
         return <input
+            className={props.className}
             type={props.type}
             name={props.name}
             value={this.state[props.name]}
             onChange={this.update}
         />
+    }
+
+    Checkbox = (props) => {
+        return (
+        <div className="form-check">
+            <label className="form-check-label">
+                <this.Input className={"form-check-input "+props.className}
+                    type="checkbox"
+                    name={props.name}
+                    />{props.text}
+            </label>
+        </div>
+    )
+    }
+
+    Button = (props) => {
+        return <button className={"btn"+(this.state[props.name] === props.value? " btn-primary":" btn-secondary")}
+            type="button"
+            name={props.name}
+            value={props.value}
+            onClick={this.update}
+        >{props.text?props.text:props.value}</button>
     }
 
     render() {
@@ -80,37 +120,89 @@ class FilterModal extends React.Component {
                             <ModalSection>
                                 <h2>Faixa de preço</h2>
                                 <h3>O preço médio por noite é [R$ 242]</h3>
-                                <PriceInput name='min' value={this.state.price_min} update={this.update} />-
-                                <PriceInput name='max' value={this.state.price_max} update={this.update} />
+                                <this.Input
+                                    type="text"
+                                    name="price_min"
+                                />-
+                                <this.Input
+                                    type="text"
+                                    name="price_max"
+                                />
                             </ModalSection>
-                            <h2>Tipo de lugar</h2>
-                            <this.Input
-                                type="checkbox"
-                                name="entire_space"
-                            />Espaço inteiro
-                            <input type="checkbox" />Quarto compartilhado
-                            <input type="checkbox" />Quarto inteiro
-                            <h2>Quartos e camas</h2>
-                            <h3>Quartos</h3>
-                            <h3>Camas</h3>
-                            <h3>Banheiros</h3>
+                            <ModalSection>
+                                <h2>Tipo de lugar</h2>
+                                <this.Checkbox name="entire_space" text="Enpaço inteiro" />
+                                <this.Checkbox name="shared_room" text="Quarto compartilhado" />
+                                <this.Checkbox name="entire_room" text="Quarto inteiro" />
+                            </ModalSection>
+                            <ModalSection>
+                                <h2>Quartos e camas</h2>
+                                <h3>Quartos</h3>
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="rooms" value="" text="Qualquer um"/>
+                                        <this.Button name="rooms" value="1"/>
+                                        <this.Button name="rooms" value="2"/>
+                                        <this.Button name="rooms" value="3"/>
+                                        <this.Button name="rooms" value="4"/>
+                                        <this.Button name="rooms" value="5"/>
+                                        <this.Button name="rooms" value="6"/>
+                                        <this.Button name="rooms" value="7"/>
+                                        <this.Button name="rooms" value="8" text="8+"/>
+                                    </div>
+                                </div>
+                                <h3>Camas</h3>
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="beds" value="" text="Qualquer um"/>
+                                        <this.Button name="beds" value="1"/>
+                                        <this.Button name="beds" value="2"/>
+                                        <this.Button name="beds" value="3"/>
+                                        <this.Button name="beds" value="4"/>
+                                        <this.Button name="beds" value="5"/>
+                                        <this.Button name="beds" value="6"/>
+                                        <this.Button name="beds" value="7"/>
+                                        <this.Button name="beds" value="8" text="8+"/>
+                                    </div>
+                                </div>
+                                <h3>Banheiros</h3>
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="bathrooms" value="" text="Qualquer um"/>
+                                        <this.Button name="bathrooms" value="1"/>
+                                        <this.Button name="bathrooms" value="2"/>
+                                        <this.Button name="bathrooms" value="3"/>
+                                        <this.Button name="bathrooms" value="4"/>
+                                        <this.Button name="bathrooms" value="5"/>
+                                        <this.Button name="bathrooms" value="6"/>
+                                        <this.Button name="bathrooms" value="7"/>
+                                        <this.Button name="bathrooms" value="8" text="8+"/>
+                                    </div>
+                                </div>
+                            </ModalSection>
+                            <ModalSection>
                             <h2>Tipos de propriedade</h2>
-                            <button>casa</button>
-                            <button>Apartamento</button>
-                            <button>Casa de hóspedes</button>
-                            <button>Hotel</button>
-                            <h2>Comodidades</h2>
-                            <input type="checkbox" name="" id="" />Wi-Fi
-                            <input type="checkbox" name="" id="" />Máquina de Lavar
-                            <input type="checkbox" name="" id="" />Ferro de passar
-                            <input type="checkbox" name="" id="" />Cozinha
-                            <input type="checkbox" name="" id="" />Ar-condicionado
-                            <h2>Opção de reserva</h2>
-                            <input type="checkbox" name="" id="" />Reserva instantânea
-                            <input type="checkbox" name="" id="" />Self check-in
+                                <button>casa</button>
+                                <button>Apartamento</button>
+                                <button>Casa de hóspedes</button>
+                                <button>Hotel</button>
+                            </ModalSection>
+                            <ModalSection>
+                                <h2>Comodidades</h2>
+                                <this.Checkbox name="wifi" text="Wi-Fi"/>
+                                <this.Checkbox name="washing_machine" text="Máquina de Lavar"/>
+                                <this.Checkbox name="iron" text="Ferro de passar"/>
+                                <this.Checkbox name="kitchen" text="Cozinha"/>
+                                <this.Checkbox name="air_conditioning" text="Ar-condicionado"/>
+                            </ModalSection>
+                            <ModalSection>
+                                <h2>Opção de reserva</h2>
+                                <this.Checkbox name="instant_reserve" text="Reserva instantânea"/>
+                                <this.Checkbox name="self_checkin" text="Self check-in"/>
+                            </ModalSection>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => {this.reset()}}>Remover filtros</button>
+                            <button type="button" data-dismiss="modal" onClick={() => {this.reset()}}>Remover filtros</button>
                             <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => {
                                 this.props.onSubmit(this.state);
                             }}>
