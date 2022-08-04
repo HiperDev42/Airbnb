@@ -85,6 +85,7 @@ const InfoWrapper = styled.div`
 
 const Wrapper = styled.a`
     cursor: pointer;
+    width: 100%;
     &, &:hover, &:focus, &:active{
         color: inherit;
         text-decoration: none;

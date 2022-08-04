@@ -8,7 +8,7 @@ function NavBar() {
         <nav className='navbar navbar-expand-lg sticky-top navbar-light bg-white justify-content-between'>
             <div className="container-fluid">
                 <a href="#" className="navbar-brand">
-                    <img className='header--logo' src='./images/Airbnb_Logo.png' />
+                    <img className='header--logo' src='../images/Airbnb_Logo.png' />
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
