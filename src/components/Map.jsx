@@ -142,15 +142,24 @@ class Map extends React.Component {
         this.setState(newState);
     }
 
+    handleBoundsChange = (center, zoom, bounds, marginBounds) => {
+        const newState = {
+            ...this.props.filters.get,
+            bounds: bounds,
+        }
+        this.props.filters.set(newState);
+    }
+
     render() {
         return (
             <Wrapper>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: ApiKey }}
-                    defaultCenter={center}
-                    defaultZoom={15}
+                    center={center}
+                    defaultZoom={10}
                     onClick={() => {this.handleClick(null)}}
                     options = {{ gestureHandling: 'greedy' }}
+                    onBoundsChange={this.handleBoundsChange}
                 >
                     { this.props.markers.map((marker, index) => (
                         <Marker

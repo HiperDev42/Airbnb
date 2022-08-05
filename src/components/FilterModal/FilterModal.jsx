@@ -29,16 +29,17 @@ function PriceInput(props) {
     )
 }
 
-const defaultFilters = {
+export const defaultFilters = {
     price_min: '',
     price_max: '',
     entire_space: false,
     rooms: '',
     beds: '',
     bathrooms: '',
+    bounds: Array(8).fill(null),
 }
 
-class FilterModal extends React.Component {
+export class FilterModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = defaultFilters;
