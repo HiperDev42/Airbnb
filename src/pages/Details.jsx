@@ -18,6 +18,34 @@ const Separator = styled.div`
     border-top-color: rgb(221, 221, 221);
 `;
 
+const Amenity = (props) => { return (
+    <div style={{
+        display: 'flex',
+        marginBottom: '24px',
+
+    }}>
+        <div style={{
+            flexShrink: '0',
+            minWidth: '24px',
+        }}><i className={"fa-solid fa-"+(props.icon || 'check')}/></div>
+        <div style={{ marginLeft: '16px' }}>
+            <div style={{
+                color: 'rgb(34, 34, 34)',
+                fontWeight: '600',
+                fontSize: '16px',
+                lineHeight: '20px',
+                marginBottom: '4px',
+            }}>{props.title}</div>
+            <div style={{
+                color: 'rgb(113, 113, 113)',
+                fontWeight: '400',
+                fontSize: '14px',
+                lineHeight: '20px',
+            }}>{props.desc}</div>
+        </div>
+    </div>
+)};
+
 // Main content
 function Details() {
     let { id } = useParams();
@@ -53,6 +81,44 @@ function Details() {
                                     padding: '32px 0',
                                 }}>
                                     <p>{loc.description}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <Separator/>
+                                <div style={{
+                                    padding: '32px 0',
+                                }}>
+                                    {[
+                                        {
+                                            id: 'wifi',
+                                            icon: 'wifi',
+                                            title: 'Wi-Fi',
+                                            desc: 'A estadia possui Wi-Fi disponível',
+                                        },{
+                                            id: 'washing_machine',
+                                            icon: 'jug-detergent',
+                                            title: 'Máquina de lavar roupa',
+                                            desc: 'A estadia possui máquinas de lavar roupas',
+                                        },{
+                                            id: 'Ferro de passar',
+                                            icon: 'shirt',
+                                            title: 'Wi-Fi',
+                                            desc: 'A estadia possui um ferro de passar roupas',
+                                        },{
+                                            id: 'kitchen',
+                                            icon: 'kitchen-set',
+                                            title: 'Cozinha',
+                                            desc: 'A estadia possui uma cozinha',
+                                        },{
+                                            id: 'air_conditioning',
+                                            icon: 'snowflake',
+                                            title: 'Ar condicionado',
+                                            desc: 'A estadia possui ar condicionado nos quartos',
+                                        },
+                                    ].map((amenity, index) => {
+                                        if (loc.amenities[amenity.id])
+                                            return <Amenity icon={amenity.icon} title={amenity.title} desc={amenity.desc}/>
+                                    })}
                                 </div>
                             </div>
                         </div>
