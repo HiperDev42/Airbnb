@@ -41,10 +41,10 @@ function Details() {
                                     margin: '0',
                                     padding: '0',
                                 }}>
-                                    <li style={{display: 'inline-block'}}>[10] hóspedes<span> · </span></li>
-                                    <li style={{display: 'inline-block'}}>[5] quartos<span> · </span></li>
-                                    <li style={{display: 'inline-block'}}>[12] camas<span> · </span></li>
-                                    <li style={{display: 'inline-block'}}>[4] banheiros</li>
+                                    <li style={{display: 'inline-block'}}>{loc.beds} hóspedes<span> · </span></li>
+                                    <li style={{display: 'inline-block'}}>{loc.rooms} quartos<span> · </span></li>
+                                    <li style={{display: 'inline-block'}}>{loc.beds} camas<span> · </span></li>
+                                    <li style={{display: 'inline-block'}}>{loc.bathrooms} banheiros</li>
                                 </ol>
                             </div>
                             <div>
