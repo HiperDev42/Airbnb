@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 
 // Pages
 import Search from './pages/Search';
+import Details from './pages/Details';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={ <Search/> }/>
+        <Route path="/details/:id" element={ <Details/> }/>
       </Routes>
     </div>
   );

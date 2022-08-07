@@ -95,7 +95,7 @@ const Wrapper = styled.a`
 function Card(props) {
     return (
         <Wrapper
-            href='/#'
+            href={'/details/'+props.loc.id}
             className='loc--card'
             onMouseEnter={props.onMouseEnter}
             onMouseLeave={props.onMouseLeave}
