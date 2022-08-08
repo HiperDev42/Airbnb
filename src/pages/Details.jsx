@@ -100,9 +100,9 @@ function Details() {
                                             title: 'Máquina de lavar roupa',
                                             desc: 'A estadia possui máquinas de lavar roupas',
                                         },{
-                                            id: 'Ferro de passar',
+                                            id: 'iron',
                                             icon: 'shirt',
-                                            title: 'Wi-Fi',
+                                            title: 'Ferro de passar',
                                             desc: 'A estadia possui um ferro de passar roupas',
                                         },{
                                             id: 'kitchen',
