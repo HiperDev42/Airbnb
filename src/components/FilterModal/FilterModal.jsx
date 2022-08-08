@@ -29,15 +29,7 @@ function PriceInput(props) {
     )
 }
 
-export const defaultFilters = {
-    price_min: '',
-    price_max: '',
-    entire_space: false,
-    rooms: '',
-    beds: '',
-    bathrooms: '',
-    bounds: Array(8).fill(null),
-}
+export const defaultFilters = {}
 
 export class FilterModal extends React.Component {
     constructor(props) {
@@ -98,7 +90,9 @@ export class FilterModal extends React.Component {
     }
 
     Button = (props) => {
-        return <button className={"btn"+(this.state[props.name] === props.value? " btn-primary":" btn-secondary")}
+        const state = this.state[props.name]
+        return <button className={"btn"+((
+            typeof state == 'undefined'? props.default : state == props.value)? " btn-primary":" btn-secondary")}
             type="button"
             name={props.name}
             value={props.value}
@@ -139,9 +133,9 @@ export class FilterModal extends React.Component {
                             <ModalSection>
                                 <h2>Quartos e camas</h2>
                                 <h3>Quartos</h3>
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <this.Button name="rooms" value="" text="Qualquer um"/>
+                                <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div className="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="rooms" value="" text="Qualquer um" default/>
                                         <this.Button name="rooms" value="1"/>
                                         <this.Button name="rooms" value="2"/>
                                         <this.Button name="rooms" value="3"/>
@@ -153,9 +147,9 @@ export class FilterModal extends React.Component {
                                     </div>
                                 </div>
                                 <h3>Camas</h3>
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <this.Button name="beds" value="" text="Qualquer um"/>
+                                <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div className="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="beds" value="" text="Qualquer um" default/>
                                         <this.Button name="beds" value="1"/>
                                         <this.Button name="beds" value="2"/>
                                         <this.Button name="beds" value="3"/>
@@ -167,9 +161,9 @@ export class FilterModal extends React.Component {
                                     </div>
                                 </div>
                                 <h3>Banheiros</h3>
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <this.Button name="bathrooms" value="" text="Qualquer um"/>
+                                <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div className="btn-group mr-2" role="group" aria-label="First group">
+                                        <this.Button name="bathrooms" value="" text="Qualquer um" default/>
                                         <this.Button name="bathrooms" value="1"/>
                                         <this.Button name="bathrooms" value="2"/>
                                         <this.Button name="bathrooms" value="3"/>

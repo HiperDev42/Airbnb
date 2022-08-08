@@ -34,26 +34,26 @@ const Squared = styled.div`
 
 const Carousel = (props) => (
     <div id={"carousel"+props.id} className={"carousel slide"+(props.isMarker?" image-wide":" image-square")} style={{width: '100% !important', height: '100% !important'}} data-ride="carousel" data-interval="false" data-wrap="false">
-    <ol class="carousel-indicators">
-        <li data-target={"#carousel"+props.id} data-slide-to="0" class="active"></li>
-        <li data-target={"#carousel"+props.id} data-slide-to="1"></li>
-        <li data-target={"#carousel"+props.id} data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
+    <ol className="carousel-indicators">
         {props.src.map((img, index) => (
-            <div className={"carousel-item"+(index===0? " active":"")}>
+            <li key={index} data-target={"#carousel"+props.id} data-slide-to={index} className={index==0?"active":""}></li>
+        ))}
+    </ol>
+    <div className="carousel-inner">
+        {props.src.map((img, index) => (
+            <div key={index} className={"carousel-item"+(index===0? " active":"")}>
                 <CardImage src={img} alt="ERROR" />
             </div>
         ))}
     </div>
-    <a class="carousel-control-prev" href={"#carousel"+props.id} role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href={"#carousel"+props.id} role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <button className="carousel-control-prev" href={"#carousel"+props.id} role="button" data-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="sr-only">Previous</span>
+    </button>
+    <button className="carousel-control-next" href={"#carousel"+props.id} role="button" data-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="sr-only">Next</span>
+    </button>
     </div>
 );
 

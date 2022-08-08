@@ -76,7 +76,7 @@ const TextWrapper = styled.span`
 `;
 
 const InfoWindowWrapper = styled.div`
-    box-sizing; border-box;
+    box-sizing: border-box;
     width: 324px;
 
     position: absolute;
