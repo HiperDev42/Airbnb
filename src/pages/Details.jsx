@@ -2,9 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
-// CSS
-import './Details.css'
-
 // Data
 import Data from '../Database.json';
 
