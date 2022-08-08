@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Components
 import NavBar from './components/NavBar';
@@ -11,10 +11,10 @@ import Details from './pages/Details';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar />
       <Routes>
-        <Route path="/" element={ <Search/> }/>
-        <Route path="/details/:id" element={ <Details/> }/>
+        <Route path="/" element={<Search />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </div>
   );
