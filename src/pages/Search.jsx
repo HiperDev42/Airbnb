@@ -108,7 +108,7 @@ function SearchPage() {
           height: calc(100vh - var(--navigation-bar-offset));
         `}
           >
-            <Map setHover={hoverRef} filters={{ get: filters, set: setFilters }} markers={data} />
+            <Map setHover={hoverRef} filters={{ get: filters, set: setFilters }} data={data} />
           </div>
         </div>
       </div>

@@ -1,61 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // CSS
-import './Card.css'
+import './Card.css';
 
-const ImageWrapper = styled.div`
-    position: relative;
-
-    ${props => props.isMarker?
-    `height: 210px;` :
-    `height: 0;
-     padding-bottom: 100%;` }
-    width: 100%;
-
-    background-color: #00000022;
-
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: ${props => !props.isMarker ? "20" : "0"}px;
-    border-bottom-right-radius: ${props => !props.isMarker ? "20" : "0"}px;
-    
-    overflow: hidden;
-
-    & * {
-        position: absolute;
-    }
-`;
-
-const Squared = styled.div`
-        width: 300px;
-        height: 300px;
-`;
-
-const Carousel = (props) => (
-    <div id={"carousel"+props.id} className={"carousel slide"+(props.isMarker?" image-wide":" image-square")} style={{width: '100% !important', height: '100% !important'}} data-ride="carousel" data-interval="false" data-wrap="false">
-    <ol className="carousel-indicators">
-        {props.src.map((img, index) => (
-            <li key={index} data-target={"#carousel"+props.id} data-slide-to={index} className={index==0?"active":""}></li>
+function Carousel({ loc, isMarker }) {
+  return (
+    <div id={`carousel${loc.id}`} className={`carousel slide${isMarker ? ' image-wide' : ' image-square'}`} style={{ width: '100% !important', height: '100% !important' }} data-ride="carousel" data-interval="false" data-wrap="false">
+      <ol className="carousel-indicators">
+        {loc.image.map((img, index) => (
+          <li key={img} data-target={`#carousel${loc.id}`} data-slide-to={index} className={index === 0 ? 'active' : ''} />
         ))}
-    </ol>
-    <div className="carousel-inner">
-        {props.src.map((img, index) => (
-            <div key={index} className={"carousel-item"+(index===0? " active":"")}>
-                <CardImage src={img} alt="ERROR" />
-            </div>
+      </ol>
+      <div className="carousel-inner">
+        {loc.image.map((img, index) => (
+          <div key={img} className={`carousel-item${index === 0 ? ' active' : ''}`}>
+            <CardImage src={img} alt="ERROR" />
+          </div>
         ))}
-    </div>
-    <button className="carousel-control-prev" href={"#carousel"+props.id} role="button" data-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+      </div>
+      <button type="button" className="carousel-control-prev" href={`#carousel${loc.id}`} data-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true" />
         <span className="sr-only">Previous</span>
-    </button>
-    <button className="carousel-control-next" href={"#carousel"+props.id} role="button" data-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" className="carousel-control-next" href={`#carousel${loc.id}`} data-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true" />
         <span className="sr-only">Next</span>
-    </button>
+      </button>
     </div>
-);
+  );
+}
+
+Carousel.propTypes = {
+  loc: PropTypes.object.isRequired,
+  isMarker: PropTypes.bool,
+};
+
+Carousel.defaultProps = {
+  isMarker: false,
+};
 
 const CardImage = styled.img`
     position: absolute;
@@ -70,13 +54,13 @@ const InfoWrapper = styled.div`
     display: grid;
     grid-template-columns: 75% 25%;
     grid-template-areas: "t r" "d ." "p p";
-    ${props => props.isMarker?
-        `padding: 8px 10px 8px 10px;
+    ${(props) => (props.isMarker
+    ? `padding: 8px 10px 8px 10px;
         background-color: #fff;
         color: #000;
         border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;` :
-        ""}
+        border-bottom-right-radius: 20px;`
+    : '')}
     
         padding-top: 12px;
 
@@ -92,23 +76,42 @@ const Wrapper = styled.a`
     }
 `;
 
-function Card(props) {
-    return (
-        <Wrapper
-            href={'/details/'+props.loc.id}
-            className='loc--card'
-            onMouseEnter={props.onMouseEnter}
-            onMouseLeave={props.onMouseLeave}
-        >
-            <Carousel id={props.id} isMarker={props.isMarker} src={props.loc.image}/>
-            <InfoWrapper isMarker={props.isMarker}>
-                <span className="title one-line">{props.loc.title}</span>
-                <div className='rating'><span className='fa fa-star'>5,0 (5)</span></div>
-                <div className='description one-line text-muted'>{props.loc.description}</div>
-                <div className='pricing'>R$ {props.loc.price}</div>
-            </InfoWrapper>
-        </Wrapper>
-    )
+function Card({
+  loc, onMouseEnter, onMouseLeave, isMarker,
+}) {
+  return (
+    <Wrapper
+      href={`/details/${loc.id}`}
+      className="loc--card"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <Carousel loc={loc} isMarker={isMarker} />
+      <InfoWrapper isMarker={isMarker}>
+        <span css="grid-area: t; font-weight: 600;">
+          {loc.title}
+        </span>
+        <div css="grid-area: r;"><span className="fa fa-star">5,0 (5)</span></div>
+        <div css="grid-area: d;" className="one-line text-muted">{loc.description}</div>
+        <div css="grid-area: p; font-weight: 600;">
+          R$
+          {' '}
+          {loc.price}
+        </div>
+      </InfoWrapper>
+    </Wrapper>
+  );
 }
+
+Card.propTypes = {
+  loc: PropTypes.object.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  isMarker: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  isMarker: false,
+};
 
 export default Card;

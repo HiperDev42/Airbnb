@@ -1,8 +1,4 @@
 
-.block {
-    display: block;
-}
-
 .one-line {
     max-height: 1.25em;
     line-height: 1.25;
@@ -10,26 +6,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.loc--card .title {
-    grid-area: t;
-
-    font-weight: 600;
-}
-
-.loc--card .description {
-    grid-area: d;
-}
-
-.loc--card .rating {
-    grid-area: r;
-}
-
-.loc--card .pricing {
-    grid-area: p;
-
-    font-weight: 600;
 }
 
 .image-square {
